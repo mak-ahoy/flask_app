@@ -45,7 +45,7 @@ def changed():
     email = str(request.form.get('email'))
     passw = str(request.form.get('password'))
 
-    if (validatePass(passw) and validateEmail(email)):
+    if (validatePass(passw) and validateEmail(email) and email=="muhammadalik1235@gmail.com" and passw=="Admin123"):
         return render_template('welcome.html', email = email , passw = passw)
     
 #this requires moroe testing and debugging for the smae the same type of code    
@@ -55,6 +55,7 @@ def changed():
     #     return render_template('index.html', passw = "Password should greater than 8 character and not guessable!")
     elif (validatePass(passw) == True and validateEmail(email) == True):
         return render_template('login.html', email = email, passw = passw)
+
     elif (validatePass(passw) == False and validateEmail(email) == True):
         return render_template('login.html', email = email, passw = "Wrong")
     else:
@@ -87,7 +88,7 @@ def validateEmail(email):
         
 #validates login password for the page
 def validatePass(password):
-    if (len(password)>8 and password != "Password123"):
+    if (len(password)>=8 and password != "Password123"):
         return True
     else:
         return False
